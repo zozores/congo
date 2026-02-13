@@ -2,7 +2,8 @@
   with .Get "cardColor" }}style="background-color: {{ . | safeCSS }};" {{ end }}>
   <span class="pe-3 {{ if not (.Get " iconColor") }}text-primary-400{{ end }}" {{ with .Get "iconColor"
     }}style="color: {{ . | safeCSS }};" {{ end }}>
-    {{ partial "icon.html" (.Get "icon" | default (.Get 0) | default "triangle-exclamation") }}
+    {{- $icon := .Get "icon" | default (.Get 0) | default "triangle-exclamation" -}}
+    {{ partial "icon.html" $icon }}
   </span>
   <span class="{{ if not (.Get " textColor") }}dark:text-neutral-300{{ end }}" {{ with .Get "textColor"
     }}style="color: {{ . | safeCSS }};" {{ end }}>
