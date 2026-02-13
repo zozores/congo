@@ -97,12 +97,6 @@ module.exports = {
             "a code": {
               color: "var(--tw-prose-code)",
             },
-            "code::before": {
-              content: '""',
-            },
-            "code::after": {
-              content: '""',
-            },
             kbd: {
               backgroundColor: theme("colors.neutral.200 / 1"),
               padding: "0.1rem 0.4rem",
