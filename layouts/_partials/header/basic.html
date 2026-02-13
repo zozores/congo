@@ -16,8 +16,7 @@
         {{ if eq .Params.action "search" }}
         {{ $.Scratch.Add "searchCount" 1 }}
         {{ if $.Site.Params.enableSearch | default false }}
-        <button id="search-button-{{ $.Scratch.Get " searchCount" }}" title="{{ .Title | default (i18n "
-          search.open_button_title") }}">
+        <button id="search-button-{{ $.Scratch.Get " searchCount" }}" title="{{ .Title | default (i18n "search.open_button_title") }}">
           {{ with .Params.icon | default "search" }}
           <span class="group-dark:hover:text-primary-400 transition-colors group-hover:text-primary-600">
             {{- partial "icon.html" . -}}
