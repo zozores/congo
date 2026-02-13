@@ -1,11 +1,15 @@
-<div class="flex rounded-md px-4 py-3 {{ if not (.Get " cardColor") }}bg-primary-100 dark:bg-primary-900{{ end }}" {{
-  with .Get "cardColor" }}style="background-color: {{ . | safeCSS }};" {{ end }}>
-  <span class="pe-3 {{ if not (.Get " iconColor") }}text-primary-400{{ end }}" {{ with .Get "iconColor"
+{{- $cardColor := .Get "cardColor" -}}
+{{- $iconColor := .Get "iconColor" -}}
+{{- $textColor := .Get "textColor" -}}
+{{- $icon := .Get "icon" | default (.Get 0) | default "triangle-exclamation" -}}
+
+<div class="flex rounded-md px-4 py-3 {{ if not $cardColor }}bg-primary-100 dark:bg-primary-900{{ end }}" {{ with
+  $cardColor }}style="background-color: {{ . | safeCSS }};" {{ end }}>
+  <span class="pe-3 {{ if not $iconColor }}text-primary-400{{ end }}" {{ with $iconColor
     }}style="color: {{ . | safeCSS }};" {{ end }}>
-    {{- $icon := .Get "icon" | default (.Get 0) | default "triangle-exclamation" -}}
     {{ partial "icon.html" $icon }}
   </span>
-  <span class="{{ if not (.Get " textColor") }}dark:text-neutral-300{{ end }}" {{ with .Get "textColor"
+  <span class="{{ if not $textColor }}dark:text-neutral-300{{ end }}" {{ with $textColor
     }}style="color: {{ . | safeCSS }};" {{ end }}>
     {{- .Inner | markdownify -}}
   </span>
